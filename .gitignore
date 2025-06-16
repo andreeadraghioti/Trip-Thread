@@ -1,0 +1,32 @@
+.idea/
+*.iml
+
+trip-planner-ui/node_modules/
+trip-planner-ui/dist/
+trip-planner-ui/.angular/
+trip-planner-ui/.cache/
+trip-planner-ui/npm-debug.log
+trip-planner-ui/yarn-error.log
+
+trip-planner/target/
+*.log
+
+__pycache__/
+*.pyc
+
+python_scripts/__pycache__/
+python_scripts/cache/
+python_scripts/exports/
+python_scripts/token files/
+python_scripts/client_secret.json
+python_scripts/token_places_v1.json
+python_scripts/.env
+python_scripts/*.log
+python_scripts/*.csv
+python_scripts/results.csv
+python_scripts/pandasai.log
+pandasai.log
+results.csv
+token files/token_places_v1.json
+
+cache/
