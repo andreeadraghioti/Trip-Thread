@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 mat-dialog-title>SAVE TRIP</h2>
+
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Trip name</mat-label>
+      <input matInput [(ngModel)]="tripName" placeholder="ex: Paris getaway" maxlength="30"/>
+      <mat-hint align="end">{{ tripName.length }}/30</mat-hint>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <div class="dialog-actions">
+    <div class="cancel-button" (click)="cancel()">CANCEL</div>
+    <button id="done-button" mat-button color="primary" (click)="close()" [disabled]="!tripName">DONE</button>
+  </div>
+</div>

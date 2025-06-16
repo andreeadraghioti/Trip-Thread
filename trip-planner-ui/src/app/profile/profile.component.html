@@ -1,0 +1,61 @@
+<a class="back-button" routerLink="/home">
+  <i class="fas fa-chevron-left"></i>
+  <span class="text">HOME</span>
+</a>
+<div class="container">
+  <div class="profile-picture">
+    <img [src]="selectedPicture" class="profile-avatar" alt="profile picture"/>
+    <div *ngIf="edit" class="edit-profile-picture" (click)="openProfilePictureDialog()"><i class="fa-regular fa-pen-to-square"></i>
+    </div>
+  </div>
+  <h2 class="title">HELLO, {{ username?.toUpperCase() }}</h2>
+
+  <div class="container-body">
+    <h3>Welcome back, {{firstName}} {{lastName}}. What are we thinking today? Let's plan together.</h3>
+    <h3>Here's what we've planned so far:</h3>
+    <div *ngIf="trips.length === 0">
+      <p>-you haven't created any trips yet.-</p>
+    </div>
+
+    <div *ngFor="let trip of trips" class="trip-card">
+      <div class="display-flex">
+        <h3>{{ trip.tripName }}</h3>
+        <h3>{{ trip.city }} – {{ trip.createdAt | date: 'yyyy' }}</h3>
+        <div (click)="exportTripPdf(trip.id, trip.tripName)" class="export-pdf">download&nbsp;<i class="fa-solid fa-file-pdf"></i></div>
+        <i *ngIf="edit" (click)="deleteTrip(trip.id, trip.tripName)" id="delete-trip" class="fa-solid fa-trash"></i>
+        <i id="expand-trip-details" (click)="toggleExpand(trip.id)" class="fas" [ngClass]="isExpanded(trip.id) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      </div>
+      <div *ngIf="isExpanded(trip.id)" class="trip-details">
+        <div class="places-list">
+          <div *ngFor="let place of trip.places" class="place-card">
+            <div class="card-header">
+              <div class="display-flex">
+                <h4>{{ place.name.toUpperCase() }}</h4>
+                <h4 *ngIf="place.price">{{ place.price | priceSymbol }}</h4>
+              </div>
+              <p *ngIf="place.type">{{ place.type.toLowerCase() }}</p>
+            </div>
+            <p *ngIf="place.description">{{ place.description }}</p>
+            <p *ngIf="place.address"><i class="fa-solid fa-location-dot"></i>&nbsp;{{ place.address }}</p>
+            <div class="display-flex">
+              <p *ngIf="place.phone"><i class="fa-solid fa-phone"></i>&nbsp;<a
+                [href]="'tel:' + place.phone">{{ place.phone }}</a></p>
+              <p *ngIf="place.website">
+                <i class="fa-solid fa-arrow-pointer"></i>
+                <a [href]="place.website" target="_blank">{{ place.website }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="display-flex">
+    <button class="button" *ngIf="!edit" mat-raised-button (click)="toggleEditMode(true)">EDIT PROFILE</button>
+    <button class="button" *ngIf="edit" mat-raised-button (click)="toggleEditMode(false)">DONE</button>
+    <button class="button" *ngIf="!edit" mat-raised-button (click)="logout()">LOG OUT</button>
+    <button class="button" *ngIf="edit" mat-raised-button (click)="changePassword()">ACCOUNT MANAGEMENT</button>
+  </div>
+
+</div>

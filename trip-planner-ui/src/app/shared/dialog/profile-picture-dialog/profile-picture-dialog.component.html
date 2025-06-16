@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 mat-dialog-title>CHOOSE A PICTURE</h2>
+  <div class="profile-picture-grid">
+    <img
+      *ngFor="let pic of profilePictures"
+      [src]="pic"
+      class="picture-option"
+      [class.selected]="selectedPicture === pic"
+      (click)="selectedPicture = pic"
+    />
+
+  </div>
+  <div class="dialog-actions">
+    <label class="upload-option">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+      <div class="upload-box">
+        <i class="fas fa-upload"></i>
+        <span>UPLOAD YOUR OWN</span>
+      </div>
+    </label>
+    <div class="button" (click)="close()">DONE
+      <i class="fas fa-chevron-right"></i></div>
+  </div>
+</div>
+
+

@@ -1,0 +1,78 @@
+.container {
+  padding: 2rem;
+  border-radius: 16px;
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+  font-size: 1.2rem;
+
+  h2 {
+    font-family: 'WDXL Lubrifont TC', sans-serif;
+    border-bottom: 1px solid black;
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    .upload-option {
+      i {
+        margin-right: 5px;
+      }
+      background: white;
+      padding: 5px 10px;
+      transition: transform 0.3s;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
+    }
+
+    .button {
+      background: white;
+      padding: 5px 10px;
+      border: 1px solid white;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateX(6px);
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .profile-picture-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .picture-option {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    padding: 1px;
+    border: 2px dashed transparent;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .picture-option.selected {
+    border-color: black;
+  }
+
+  .preview img.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .preview h3 {
+    margin-bottom: 0.5rem;
+  }
+}
+

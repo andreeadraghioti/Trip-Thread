@@ -1,0 +1,226 @@
+.back-button {
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background: white;
+  color: black;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.3s ease;
+
+  .text {
+    margin-left: 8px;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, max-width 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .text {
+      opacity: 1;
+      max-width: 60px;
+    }
+  }
+
+  i {
+    font-size: 25px;
+  }
+}
+
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+
+  .title {
+    margin: 0;
+  }
+
+  .container-body {
+    padding: 2rem 0 0;
+
+    .trip-card {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      #delete-trip {
+        color: red;
+        margin-top: 6px;
+        transition: transform 0.2s ease;
+        &:hover {
+          transform: scale(1.2);
+          cursor: pointer;
+        }
+      }
+
+      .export-pdf {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        border: 1.5px dashed white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+      }
+
+      h3 {
+        margin: 0;
+      }
+
+      #expand-trip-details {
+        padding: 6px;
+        border: 1.5px dashed white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+      }
+
+      .trip-details {
+        padding-top: 2rem;
+
+        .places-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .place-card {
+          background-color: #f9f9f9;
+          padding: 1.5rem;
+          border-radius: 12px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+          font-family: 'WDXL Lubrifont TC', sans-serif;
+
+          .open-now {
+            float: right;
+            margin-bottom: 0;
+            border: 1px dashed black;
+            border-radius: 8px;
+            padding: 2px 8px;
+          }
+
+          .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid black;
+
+            h4 {
+              font-family: 'WDXL Lubrifont TC', sans-serif;
+              font-size: 1.3rem;
+              color: #222;
+              margin: 0 5px 0 0;
+            }
+
+            .type {
+              font-size: 1rem;
+              font-weight: 500;
+              color: #555;
+            }
+          }
+
+          p {
+            margin: 0.4rem 0;
+            font-size: 1rem;
+
+            i {
+              margin-right: 5px;
+            }
+
+            a {
+              line-break: anywhere;
+              color: black;
+              text-decoration: none;
+
+              &:hover {
+                color: #3a3a3a;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  .button {
+    font-family: 'WDXL Lubrifont TC', sans-serif;
+  }
+
+  h3, h2 {
+    font-family: 'WDXL Lubrifont TC', sans-serif;
+  }
+
+  .profile-picture {
+    float: right;
+    position: relative;
+    width: 100px;
+    height: 100px;
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      padding: 2px;
+      border: 2px dashed black;
+    }
+
+    .edit-profile-picture {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: white;
+      border-radius: 50%;
+      padding: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transform: translate(30%, 30%);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+
+      i {
+        font-size: 18px;
+
+        &:hover {
+          color: #2a2a2a;
+        }
+      }
+    }
+  }
+
+  .display-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

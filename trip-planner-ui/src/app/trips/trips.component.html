@@ -1,0 +1,122 @@
+<a *ngIf="!placesGenerated" class="back-button" routerLink="/home">
+  <i class="fas fa-chevron-left"></i>
+  <span  class="text">HOME</span>
+</a>
+<div  *ngIf="placesGenerated" class="back-button">
+  <i class="fas fa-chevron-left"></i>
+  <span class="text" (click)="changePlacesGenerated()">BACK</span>
+</div>
+
+<div class="loader-overlay" *ngIf="isLoading">
+  <div class="loader-card">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Generating your trip...</p>
+  </div>
+</div>
+
+<div *ngIf="placesGenerated && !isLoading" class="places">
+  <div class="container">
+    <div class="places-header">
+      <h2>{{ city.value.city }}, {{ city.value.country }}</h2>
+      <div *ngIf="!doneSaving && !isSaving" class="save-trip-button" (click)="openSaveTripDialog()">SAVE TRIP
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div *ngIf="isSaving" class="save-trip-button">SAVING TRIP...</div>
+      <a routerLink="/profile" *ngIf="doneSaving &&!isSaving" class="save-trip-button">DONE, SEE IT IN YOUR PROFILE
+        <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+
+    <div *ngIf="places?.length && !isLoading" class="places-list">
+      <div *ngFor="let place of places" class="place-card">
+        <div class="card-header">
+          <div class="display-flex">
+            <h4>{{ place.name.toUpperCase() }}</h4>
+            <h4 *ngIf="place.price">{{ place.price | priceSymbol }}</h4>
+          </div>
+          <p *ngIf="place.type">{{ place.type.toLowerCase() }}</p>
+        </div>
+        <p *ngIf="place.description">{{ place.description }}</p>
+        <p *ngIf="place.address"><i class="fa-solid fa-location-dot"></i>&nbsp;{{ place.address }}</p>
+        <div class="display-flex">
+          <p *ngIf="place.phone"><i class="fa-solid fa-phone"></i>&nbsp;<a
+            [href]="'tel:' + place.phone">{{ place.phone }}</a></p>
+          <p *ngIf="place.website">
+            <i class="fa-solid fa-arrow-pointer"></i>
+            <a [href]="place.website" target="_blank">{{ place.website }}</a>
+          </p>
+        </div>
+        <p *ngIf="place.open === true" class="open-now">
+          open now
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!placesGenerated && !isLoading" class="trip-details">
+  <div class="container">
+    <h2>A few details...</h2>
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>Where are you going?</mat-label>
+      <input
+        type="text"
+        placeholder="Start typing..."
+        aria-label="City"
+        matInput
+        [formControl]="city"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCity">
+        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+          {{ city.city }}, {{ city.country }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <h3>who are you travelling with?</h3>
+
+    <div class="options">
+      <div
+        class="card"
+        *ngFor="let option of groupOptions"
+        [class.selected]="selectedGroup === option"
+        (click)="selectGroup(option)">
+        {{ option }}
+      </div>
+    </div>
+
+    <h3>what is your budget?</h3>
+
+    <div class="options">
+      <div
+        class="card"
+        *ngFor="let option of budgetOptions"
+        [class.selected]="selectedBudget === option"
+        (click)="selectBudget(option)">
+        {{ option }}
+      </div>
+    </div>
+
+    <h3>what are you interested in doing?</h3>
+
+    <div class="options">
+      <div
+        class="card"
+        *ngFor="let option of activitiesOptions"
+        [class.selected]="selectedActivities.includes(option)"
+        (click)="selectActivities(option)">
+        {{ option }}
+      </div>
+    </div>
+
+    <div
+      class="generate-trip-button"
+      *ngIf="selectedBudget && city.value && selectedGroup && selectedActivities.length"
+      (click)="getRecommendations()"
+    >
+      GENERATE TRIP
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+</div>

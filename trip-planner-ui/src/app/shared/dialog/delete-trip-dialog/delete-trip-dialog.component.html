@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 mat-dialog-title>DELETE TRIP</h2>
+
+  <div class="mat-dialog-content">
+    <p>{{ data.message }}</p>
+  </div>
+
+  <div class="dialog-actions">
+    <div class="button" (click)="close(false)">CANCEL</div>
+    <div class="delete-button" (click)="close(true)">DELETE</div>
+  </div>
+</div>
+

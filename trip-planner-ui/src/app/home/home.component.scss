@@ -1,0 +1,85 @@
+.home-container {
+  min-height: 100vh; // umple toată înălțimea viewportului
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+  .logo {
+    img {
+      max-width: 300px;
+      height: auto;
+      margin: 0 20px 20px 0;
+    }
+  }
+  .title {
+    h1{
+      font-family: 'WDXL Lubrifont TC', sans-serif;
+      font-size: 3rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 2rem;
+  .home-card {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 2rem 2rem 0.8rem;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s, border-style 0.2s;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+
+    i {
+      font-size: 50px;
+      color: black;
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    p {
+      font-family: 'WDXL Lubrifont TC', sans-serif;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin: 0;
+      color: black;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      border-style: dotted;
+
+      i {
+        color: #2a2a2a;
+        transform: translateY(-8px);
+      }
+
+      p {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+}
